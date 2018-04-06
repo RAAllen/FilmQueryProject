@@ -119,10 +119,10 @@ public class Film {
 	
 	@Override
 	public String toString() {
-		return "Film ID: " + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
-				+ ", languageID=" + languageID + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
-				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
-				+ ", specialFeatures=" + specialFeatures + "]";
+		return "Film: " + id + " - \"" + title + "\"  " + description + ".\nRated " + rating + " and released in " + releaseYear
+				+ " in " + languageID + " at a length of " + length + " minutes with these special features: " + specialFeatures+ ".\nRent for " + rentalDuration + " days for $" + rentalRate
+				+ ", replace for $" + replacementCost + 
+				".";
 	}
 	
 	public boolean equals(int id) {
