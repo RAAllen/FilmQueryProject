@@ -15,9 +15,9 @@ public class Film {
 	private String rating;
 	private String specialFeatures;
 	private List<Actor> cast;
-	
-    public Film(int id, String title, String description, int releaseYear, int languageID, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
+
+	public Film(int id, String title, String description, int releaseYear, int languageID, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures, List<Actor> cast) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -30,6 +30,14 @@ public class Film {
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
+		this.cast = cast;
+	}
+	
+    public List<Actor> getCast() {
+		return cast;
+	}
+	public void setCast(List<Actor> cast) {
+		this.cast = cast;
 	}
 
 	public int getId() {
@@ -111,7 +119,7 @@ public class Film {
 	
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
+		return "Film ID: " + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
 				+ ", languageID=" + languageID + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
 				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
 				+ ", specialFeatures=" + specialFeatures + "]";

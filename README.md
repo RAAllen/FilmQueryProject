@@ -17,7 +17,13 @@
 
 ## Program Specifications
 
-* stuff
+* The user will be greeted by a menu with three options: to look up a film by its id, to look up a film with a keyword or to exit the program.
+
+* If the user chooses to exit, they will be told "Goodbye" and the program will exit.
+
+* If the user chooses to look up the film by id, they will be given a prompt to enter an id. If the film is found by its id it will be displayed, if it is not found they will be told it was not found.
+
+* If the user chooses to look up the film by keyword, they will be given a prompt to enter a keyword. If the film is found by the keyword, it will be displayed, if it is not found they will be told it was not found.
 
 
 ## Support and Contact Details
@@ -26,7 +32,7 @@ _Please contact RebeccaZarsky@gmail.com for technical questions or assistance ru
 
 ## Technologies Used
 
-_This program utilizes Java, Atom and the Eclipse Integrated Development Environment._
+_This program utilizes Java, Maven, Atom and the Eclipse Integrated Development Environment._
 
 ## License
 
