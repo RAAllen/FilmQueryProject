@@ -35,7 +35,7 @@ public class Actor {
 
 	@Override
 	public String toString() {
-		return "Actor ID: " + id + " : " + firstName + " " + lastName;
+		return "Actor: " + id + " - " + firstName + " " + lastName;
 	}
 	@Override
 	public int hashCode() {
