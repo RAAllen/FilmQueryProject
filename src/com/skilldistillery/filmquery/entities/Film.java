@@ -122,7 +122,7 @@ public class Film {
 		return "Film: " + id + " - \"" + title + "\"  " + description + ".\nRated " + rating + " and released in " + releaseYear
 				+ " in " + languageID + " at a length of " + length + " minutes with these special features: " + specialFeatures+ ".\nStarring: " + cast + "\nRent for " + rentalDuration + " days for $" + rentalRate
 				+ ", replace for $" + replacementCost + 
-				".";
+				".\n";
 	}
 	
 	public boolean equals(int id) {
