@@ -11,6 +11,44 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String username = "student";
 	private static final String password = "student";
 
+	
+	public Film getFilmByKeyword(String keyword) {
+		Film film = null;
+        try {
+			Connection conn = DriverManager.getConnection(URL, username, password);
+			String sql = "SELECT id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features FROM film WHERE (title LIKE ?) OR (description LIKE ?)";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			String toBeSet = "%" + keyword + "%";
+			stmt.setString(1, toBeSet);
+			stmt.setString(2, toBeSet);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String title = rs.getString(2);
+				String description = rs.getString(3);
+				int releaseYear = rs.getInt(4);
+				int languageId = rs.getInt(5);
+				int rentalDuration = rs.getInt(6);
+				double rentalRate = rs.getDouble(7);
+				int length = rs.getInt(8);
+				double replacementCost = rs.getDouble(9);
+				String rating = rs.getString(10);
+				String specialFeatures = rs.getString(11);
+				film = new Film(id, title, description, releaseYear, languageId, rentalDuration, rentalRate, length,
+						replacementCost, rating, specialFeatures);
+				List<Actor> cast = getActorsByFilmId(id);
+				film.setCast(cast);
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+			} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return film;
+	}
+
+	
 	@Override
 	public Film getFilmById(int filmId) {
 		Film film = null;
@@ -47,6 +85,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return film;
 	}
 
+	
 	@Override
 	public Actor getActorById(int actorId) {
 		Actor actor = null;

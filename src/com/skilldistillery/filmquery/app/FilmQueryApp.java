@@ -42,8 +42,9 @@ public class FilmQueryApp {
 				} else if (theInput.equals("2")) {
 					ioManager.print(new TextWithNewLine(
 							"Enter a keyword to cross reference against film titles and descriptions."));
-					String keywordInput = ioManager.getUserInput(new Text(""));
-					
+					String keywordInput = ioManager.getUserInput(new Text(""));	
+					Film filmToReturn = db.getFilmByKeyword(keywordInput);
+					ioManager.print(new TextWithNewLine(filmToReturn.toString()));
 				} else if (theInput.equals("3")) {
 					ioManager.print(new TextWithNewLine("Goodbye!"));
 					keepLooking = false;
