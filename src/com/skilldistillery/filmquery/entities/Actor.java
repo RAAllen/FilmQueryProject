@@ -32,11 +32,12 @@ public class Actor {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Actor: " + id + " - " + firstName + " " + lastName;
+		return firstName + " " + lastName;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -51,7 +51,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ioManager.print(new TextWithNewLine("An error occurred, please make another selection."));
+//			e.printStackTrace();
 		}
 		return film;
 	}
@@ -91,7 +92,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ioManager.print(new TextWithNewLine("An error occurred, please make another selection."));
+//			e.printStackTrace();
 		}
 
 		return film;
@@ -116,7 +118,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ioManager.print(new TextWithNewLine("An error occurred, please make another selection."));
+//			e.printStackTrace();
 		}
 		return actor;
 	}
@@ -142,7 +145,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ioManager.print(new TextWithNewLine("An error occurred, please make another selection."));
+//			e.printStackTrace();
 		}
 		return cast;
 	}
