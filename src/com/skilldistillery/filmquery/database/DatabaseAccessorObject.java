@@ -3,6 +3,7 @@ package com.skilldistillery.filmquery.database;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.skilldistillery.iomanager.common.*;
 import com.skilldistillery.filmquery.entities.Actor;
 import com.skilldistillery.filmquery.entities.Film;
 
@@ -10,19 +11,22 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid";
 	private static final String username = "student";
 	private static final String password = "student";
+	private static IOManager ioManager = new SystemIOManager();
 
-	
 	public Film getFilmByKeyword(String keyword) {
 		Film film = null;
-        try {
+		try {
 			Connection conn = DriverManager.getConnection(URL, username, password);
 			String sql = "SELECT id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features FROM film WHERE (title LIKE ?) OR (description LIKE ?)";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			String toBeSet = "%" + keyword + "%";
+			String secondToBeSet = "%" + keyword + "%";
 			stmt.setString(1, toBeSet);
-			stmt.setString(2, toBeSet);
+			stmt.setString(2, secondToBeSet);
 			ResultSet rs = stmt.executeQuery();
+			boolean filmFound = false;
 			while (rs.next()) {
+				filmFound = true;
 				int id = rs.getInt(1);
 				String title = rs.getString(2);
 				String description = rs.getString(3);
@@ -38,17 +42,20 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						replacementCost, rating, specialFeatures);
 				List<Actor> cast = getActorsByFilmId(id);
 				film.setCast(cast);
+				ioManager.print(new Text("\n" + film.toString()));
+			}
+			if (!filmFound) {
+				ioManager.print(new TextWithNewLine("No matching films."));
 			}
 			rs.close();
 			stmt.close();
 			conn.close();
-			} catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return film;
 	}
 
-	
 	@Override
 	public Film getFilmById(int filmId) {
 		Film film = null;
@@ -58,7 +65,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet rs = stmt.executeQuery();
+			boolean filmFound = false;
 			if (rs.next()) {
+				filmFound = true;
 				int id = rs.getInt(1);
 				String title = rs.getString(2);
 				String description = rs.getString(3);
@@ -75,6 +84,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				List<Actor> cast = getActorsByFilmId(filmId);
 				film.setCast(cast);
 			}
+			if (!filmFound) {
+				ioManager.print(new TextWithNewLine("No matching films."));
+			}
 			rs.close();
 			stmt.close();
 			conn.close();
@@ -85,7 +97,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return film;
 	}
 
-	
 	@Override
 	public Actor getActorById(int actorId) {
 		Actor actor = null;

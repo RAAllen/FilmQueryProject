@@ -36,15 +36,14 @@ public class FilmQueryApp {
 					ioManager.print(
 							new TextWithNewLine("Enter the numerical ID of the film you would like to look up."));
 					String filmIdInput = ioManager.getUserInput(new Text(""));
-					 int numericalId = Integer.parseInt(filmIdInput);
+					int numericalId = Integer.parseInt(filmIdInput);
 					Film filmToReturn = db.getFilmById(numericalId);
-					ioManager.print(new TextWithNewLine(filmToReturn.toString()));
+					ioManager.print(new TextWithNewLine("\n" + filmToReturn.toString()));
 				} else if (theInput.equals("2")) {
 					ioManager.print(new TextWithNewLine(
 							"Enter a keyword to cross reference against film titles and descriptions."));
-					String keywordInput = ioManager.getUserInput(new Text(""));	
+					String keywordInput = ioManager.getUserInput(new Text(""));
 					Film filmToReturn = db.getFilmByKeyword(keywordInput);
-					ioManager.print(new TextWithNewLine(filmToReturn.toString()));
 				} else if (theInput.equals("3")) {
 					ioManager.print(new TextWithNewLine("Goodbye!"));
 					keepLooking = false;
