@@ -59,7 +59,7 @@ in your terminal. This will open the Eclipse editor. You must then open the spec
 
 ## Support and Contact Details
 
-_Please contact RebeccaZarsky@gmail.com for technical questions or assistance running the program._
+_Please contact [Rebecca Allen](RebeccaZarsky@gmail.com) for technical questions or assistance running the program._
 
 ## Technologies Used
 
