@@ -50,10 +50,10 @@ public class Film {
 		List<Actor> cast = film.getCast();
 		String printedCast = printCast(cast);
 		if (printedCast.equals("")) {
-			ioManager.print(new TextWithNewLine("\nFilm " + id + " : \""+ title + "\"\n" + description + "\nRating: " + rating + "\nReleased: " + releaseYear + "\nRelease Language: " + language + "\nLength: " + length + " minutes\nSpecial features: " + specialFeatures + "\nRent for " + rentalDuration + " days for $" + rentalRate + ", replace for $" + replacementCost + ".\n"));
+			ioManager.print(new TextWithNewLine("\nFilm " + id + " : \""+ title + "\"\n✩ " + description + "\n✩ Rating: " + rating + "\n✩ Released: " + releaseYear + "\n✩ Release Language: " + language + "\n✩ Length: " + length + " minutes\n✩ Special features: " + specialFeatures + "\nRent for " + rentalDuration + " days for $" + rentalRate + ", replace for $" + replacementCost + ".\n"));
 		}
 		else {
-			ioManager.print(new TextWithNewLine("\nFilm " + id + " : \""+ title + "\"\n" + description + ".\nStarring: " + printedCast + "\nRating: " + rating + "\nReleased: " + releaseYear + "\nRelease Language: " + language + "\nLength: " + length + " minutes\nSpecial features: " + specialFeatures + "\nRent for " + rentalDuration + " days for $" + rentalRate + ", replace for $" + replacementCost + ".\n"));
+			ioManager.print(new TextWithNewLine("\nFilm " + id + " : \""+ title + "\"\n✩ " + description + ".\n✩ Starring: " + printedCast + "\n✩ Rating: " + rating + "\n✩ Released: " + releaseYear + "\n✩ Release Language: " + language + "\n✩ Length: " + length + " minutes\n✩ Special features: " + specialFeatures + "\nRent for " + rentalDuration + " days for $" + rentalRate + ", replace for $" + replacementCost + ".\n"));
 		}
 	}
 	

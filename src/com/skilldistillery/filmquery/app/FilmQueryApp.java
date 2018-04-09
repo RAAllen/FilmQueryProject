@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
 import com.skilldistillery.filmquery.database.DatabaseAccessorObject;
-import com.skilldistillery.filmquery.entities.Actor;
 import com.skilldistillery.filmquery.entities.Film;
 import com.skilldistillery.iomanager.common.*;
 
@@ -30,7 +29,6 @@ public class FilmQueryApp {
 					String filmIdInput = ioManager.getUserInput(new Text(""));
 					int numericalId = Integer.parseInt(filmIdInput);
 					Film filmToReturn = db.getFilmById(numericalId);
-//					ioManager.print(new TextWithNewLine("\n" + filmToReturn.toString()));
 				} else if (theInput.equals("2")) {
 					ioManager.print(new TextWithNewLine(
 							"Enter a keyword to cross reference against film titles and descriptions."));
@@ -43,7 +41,8 @@ public class FilmQueryApp {
 					throw new InputMismatchException();
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				ioManager.print(new TextWithNewLine("Bad user input. Enter another number."));
+//				e.printStackTrace();
 			}
 		}
 		app.shutdown();
