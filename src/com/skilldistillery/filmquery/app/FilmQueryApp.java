@@ -16,17 +16,9 @@ public class FilmQueryApp {
 		launch();
 	}
 
-	// private void test() {
-	// Film film = db.getFilmById(1);
-	// System.out.println(film);
-	// Actor actor = db.getActorById(1);
-	// System.out.println(actor);
-	// }
-
 	private static void launch() {
 		FilmQueryApp app = new FilmQueryApp();
 		boolean keepLooking = true;
-		// app.test();
 		ioManager.print(new WelcomeMessage());
 		while (keepLooking == true) {
 			ioManager.print(new DisplayMenu());
@@ -38,7 +30,7 @@ public class FilmQueryApp {
 					String filmIdInput = ioManager.getUserInput(new Text(""));
 					int numericalId = Integer.parseInt(filmIdInput);
 					Film filmToReturn = db.getFilmById(numericalId);
-					ioManager.print(new TextWithNewLine("\n" + filmToReturn.toString()));
+//					ioManager.print(new TextWithNewLine("\n" + filmToReturn.toString()));
 				} else if (theInput.equals("2")) {
 					ioManager.print(new TextWithNewLine(
 							"Enter a keyword to cross reference against film titles and descriptions."));

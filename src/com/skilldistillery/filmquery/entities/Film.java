@@ -1,8 +1,10 @@
 package com.skilldistillery.filmquery.entities;
 
 import java.util.List;
+import com.skilldistillery.iomanager.common.*;
 
 public class Film {
+	private static IOManager ioManager = new SystemIOManager();
 	private int id;
 	private String title;
 	private String description;
@@ -31,7 +33,43 @@ public class Film {
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
-//		this.cast = cast;
+	}
+	
+	public void printFilm(Film film) {
+		int id = film.getId();
+		String title = film.getTitle();
+		String description = film.getDescription();
+		int releaseYear = film.getReleaseYear();
+		String language = film.getLanguage();
+		int rentalDuration = film.getRentalDuration();
+		double rentalRate = film.getRentalRate();
+		int length = film.getLength();
+		double replacementCost = film.getReplacementCost();
+		String rating = film.getRating();
+		String specialFeatures = film.getSpecialFeatures();
+		List<Actor> cast = film.getCast();
+		String printedCast = printCast(cast);
+		if (printedCast.equals("")) {
+			ioManager.print(new TextWithNewLine("\nFilm " + id + " : \""+ title + "\"\n" + description + "\nRating: " + rating + "\nReleased: " + releaseYear + "\nRelease Language: " + language + "\nLength: " + length + " minutes\nSpecial features: " + specialFeatures + "\nRent for " + rentalDuration + " days for $" + rentalRate + ", replace for $" + replacementCost + ".\n"));
+		}
+		else {
+			ioManager.print(new TextWithNewLine("\nFilm " + id + " : \""+ title + "\"\n" + description + ".\nStarring: " + printedCast + "\nRating: " + rating + "\nReleased: " + releaseYear + "\nRelease Language: " + language + "\nLength: " + length + " minutes\nSpecial features: " + specialFeatures + "\nRent for " + rentalDuration + " days for $" + rentalRate + ", replace for $" + replacementCost + ".\n"));
+		}
+	}
+	
+	public String printCast(List<Actor> cast) {
+		StringBuilder castToPrint= new StringBuilder();
+		int i = 0;
+		for (Actor actor : cast) {
+			if(i < cast.size() - 1)
+			castToPrint.append(actor.toString() + ", ");
+			else {
+				castToPrint.append(actor.toString() + ".");
+			}
+			i++;
+		}
+		String finishedCast= castToPrint + "";
+		return finishedCast;
 	}
 	
 	public String getLanguage() {

@@ -42,7 +42,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						replacementCost, rating, specialFeatures);
 				List<Actor> cast = getActorsByFilmId(id);
 				film.setCast(cast);
-				ioManager.print(new Text("\n" + film.toString()));
+//				ioManager.print(new Text("\n" + film.toString()));
+				film.printFilm(film);
 			}
 			if (!filmFound) {
 				ioManager.print(new TextWithNewLine("No matching films."));
@@ -84,6 +85,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						replacementCost, rating, specialFeatures);
 				List<Actor> cast = getActorsByFilmId(filmId);
 				film.setCast(cast);
+				film.printFilm(film);
 			}
 			if (!filmFound) {
 				ioManager.print(new TextWithNewLine("No matching films."));
